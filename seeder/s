@@ -1,0 +1,38 @@
+<?php
+
+echo 'seeder started\n';
+
+$users = [
+    [
+        'id' => 100001,
+        'firstname' => 'Lapė',
+        'latname' => 'snapė',
+        'email' => 'lape.snape@gmail.com',
+        'ak' => '111222333',
+        'password' => sha1('123'),
+    ],
+    [
+        'id' => 100002,
+        'firstname' => 'Vilkas',
+        'latname' => 'Pilkas',
+        'email' => 'vilkas.pilkas@zaliasmiskas.lt',
+        'ak' => '222333444',
+        'password' => sha1('123'),
+    ],
+    [
+        'id' => 100003,
+        'firstname' => 'Meška',
+        'latname' => 'Lepeška',
+        'email' => 'meska.lepeska@zaliasmiskas.lt',
+        'ak' => '333444555',
+        'password' => sha1('123'),
+    ]
+];
+
+$maxUserID = 100003;
+ 
+file_put_contents(__DIR__ . '/../data/users.ser',  serialize($users));
+file_put_contents(__DIR__ . '/../data/users-max-id.ser',  serialize($maxUserID));
+echo ('seeder finisherd/n');
+
+?>
