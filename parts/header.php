@@ -9,11 +9,11 @@
 <body>
     <header>
         <div class="logo">
-            BIT Bank
+            <a href="index.php">BIT Bank</a>
         </div>
         
         <ul class="user_menu">
-            <li><a href="/user/signin.php">Sign In</a></li>    
+            <li><a href="index.php?p=signup">Sign Up</a></li>    
             <li><a href="/user/login.php">Log In</a></li>    
             <li><a href="/user/logout.php">Log Out</a></li>
         </ul>
