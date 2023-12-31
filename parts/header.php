@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
+        $headerClass = 'logedin';
+    } else {
+        $headerClass = '';
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,21 +15,24 @@
     <title>Bit Bank</title>
 </head>
 <body>
-    <header>
+    <header class="<?= $headerClass?>">
         <div class="logo">
             <a href="index.php">BIT Bank</a>
         </div>
         
         <ul class="user_menu">
+        <?php if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ ?>
+            <li><form action="http://localhost/bank/process/session/destroy.php"" method='post'><button type="submit">Log Out</button></form></li>
+        <?php } else { ?>
             <li><a href="index.php?p=signup">Sign Up</a></li>    
             <li><a href="index.php?p=login">Log In</a></li>    
-            <li><a href="/user/logout.php">Log Out</a></li>
+        <?php } ?>
+            
         </ul>
     </header>
 
 <!-- Message handling -->
     <?php
-    session_start();
     if (isset($_SESSION['msg'])){
         $msg = $_SESSION['msg'];
         unset($_SESSION['msg']);

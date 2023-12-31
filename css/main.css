@@ -40,6 +40,24 @@ header {
     color: white;
 }
 
+header.logedin, footer.logedin{
+    background-color: rgb(236, 204, 0);
+}
+
+header button{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    color: white;
+}
+
+
+header form{
+    margin-top: 0;
+    width: auto;
+}
 header .logo, footer .logo{
     display: flex;
     flex-direction: row;
@@ -80,7 +98,7 @@ header .user_menu li:hover{
     border-bottom: 4px solid black;
 }
 
-header .user_menu li:hover a{
+header .user_menu li:hover a, header .user_menu li:hover button{
     color: black;
 }
 
