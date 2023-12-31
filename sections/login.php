@@ -1,7 +1,9 @@
 <h1>Log In to Your Account</h1>
 
-<form>
-    <input id="email" name="email"></input>
-    <input id="pw" name="pw"></input>
+<form action="http://localhost/bank/process/session/authenticate.php"  method="post">
+    <label for="email">Email</label>
+    <input id="email" type="text" name="email"></input>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" name="pw"></input>
     <button type="submit"> Log In</button>
 </form>
