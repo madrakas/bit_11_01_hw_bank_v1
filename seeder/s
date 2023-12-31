@@ -6,7 +6,7 @@ $users = [
     [
         'id' => 100001,
         'firstname' => 'Lapė',
-        'latname' => 'snapė',
+        'lastname' => 'snapė',
         'email' => 'lape.snape@gmail.com',
         'ak' => '111222333',
         'password' => sha1('123'),
@@ -14,7 +14,7 @@ $users = [
     [
         'id' => 100002,
         'firstname' => 'Vilkas',
-        'latname' => 'Pilkas',
+        'lastname' => 'Pilkas',
         'email' => 'vilkas.pilkas@zaliasmiskas.lt',
         'ak' => '222333444',
         'password' => sha1('123'),
@@ -22,7 +22,7 @@ $users = [
     [
         'id' => 100003,
         'firstname' => 'Meška',
-        'latname' => 'Lepeška',
+        'lasstname' => 'Lepeška',
         'email' => 'meska.lepeska@zaliasmiskas.lt',
         'ak' => '333444555',
         'password' => sha1('123'),
