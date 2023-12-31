@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 echo 'Klaida: ' . $err;
                 // Go back to form page
                 
-                header('location: http://localhost/bank/index.php?p=signup&firstname=' . $firstname . '&lastname=' . $lastname . '&email=' . $email);
+                header('location: http://localhost/bank/index.php?p=signup&firstname=' . $firstname . '&lastname=' . $lastname . '&ak='. $ak . '&email=' . $email);
         }
 
 }
