@@ -89,6 +89,38 @@ header a {
     text-decoration: none;
 }
 
+/* Messages */
+
+.message {
+    display: flex;
+    width: calc(100% - 2rem);
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 2rem 1rem;
+    border-radius: 1rem;
+
+}
+
+.message.blue{
+    background-color: rgb(128, 215, 255);
+    border: 2px rgb(0, 0, 153) solid;
+    color: rgb(0, 0, 153);
+}
+
+.message.red{
+    background-color: rgb(255, 128, 128);
+    border: 2px rgb(153, 0, 0) solid;
+    color: rgb(153, 0, 0);
+}
+
+.message.green{
+    background-color: rgb(160, 255, 128);
+    border: 2px rgb(18, 153, 0) solid;
+    color: rgb(18, 153, 0);
+}
+
+
 /* content */
 content{
     display: flex;

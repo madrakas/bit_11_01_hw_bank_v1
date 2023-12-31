@@ -17,12 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         }elseif ($pw1 !== $pw2) {
                 $err .= 'Passwords do not match.<br/>';
         } elseif(!validPersonalCode($ak)){
-                $err .= 'Invalid Personal identification number';
+                $err .= 'Invalid Personal identification number.<br/>';
         }
         $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
         // check ak for duplicates
         // check email for duplicates in db
 
+        
         if ($err === ''){
                 // create new user
                 $usersMaxID = unserialize(file_get_contents(__DIR__ . '/../../data/users-max-id.ser'));
@@ -40,24 +41,27 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 echo '</pre>';
                 
                 file_put_contents(__DIR__ . '/../../data/users.ser',  serialize($users));
-
+                
                 //Create Success message
+                session_start();
+                $_SESSION['msg'] = 'User created successfully.';
+                $_SESSION['msgType'] = 'green';
                 // Go to login page
-                // header('location:' . __DIR__ . '/../index.php');
+                header('location: http://localhost/bank/index.php?p=login');
         } else {
-                // header('location:' . __DIR__ . '/../index.php?p=signup&firstname=' . $firstname . '&lastname=' . $lastname . '&email=' . $email);
-                // create error
+                // create error message
+                session_start();
+                $_SESSION['msg'] = 'Error: ' . $err;
+                $_SESSION['msgType'] = 'red';
                 echo 'Klaida: ' . $err;
                 // Go back to form page
+                
+                header('location: http://localhost/bank/index.php?p=signup&firstname=' . $firstname . '&lastname=' . $lastname . '&email=' . $email);
         }
 
 }
 
-
-
-
 die;
-
 
 function validPersonalCode($code): bool
 {
