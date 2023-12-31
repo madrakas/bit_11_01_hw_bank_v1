@@ -2,7 +2,7 @@
 <p>Welcome to BIT Bank. To create new user account, please fill in this form.</p>
 <p>As bonus you will receive a bonus from 100 to 1000 Eur in your new bank account.</p>
 <p>All fields are required.</p>
-<form action="./../actions/users/create.php">
+<form action="http://localhost/bank/process/users/create.php" method='post'>
     <label for="firstname">First name</label>
     <input id="firstname" name="firstname" type="text"></input>
     <label for="lastname">Last name</label>
@@ -17,4 +17,4 @@
     <input id="pw2" name="pw2" type="password"></input>
     <button type="submit">Create account</button>
     <button type="reset">Reset Form</button>
-</form>
+</form> 
