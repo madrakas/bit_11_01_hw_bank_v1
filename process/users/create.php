@@ -12,17 +12,19 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $pw2 = $_POST['pw2'] ?? '';
 
         $err ='';
+        $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
+
         if ($firstname === '' || $lastname === '' || $ak === '' || $email === '' || $pw1 === '' || $pw2 === ''){
                 $err .= 'All fields are required.<br/>';
         }elseif ($pw1 !== $pw2) {
                 $err .= 'Passwords do not match.<br/>';
         } elseif(!validPersonalCode($ak)){
                 $err .= 'Invalid Personal identification number.<br/>';
+        } elseif (count(array_filter($users, fn($user) => ($user['email'] === $email))) > 0) {
+                $err .= 'User with same Email already exists.<b/r>.';
+        } elseif (count(array_filter($users, fn($user) => ($user['ak'] === $ak))) > 0){
+                $err .= 'User with same Personal identification number already exists.<b/r>';
         }
-        $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
-        // check ak for duplicates
-        // check email for duplicates in db
-
         
         if ($err === ''){
                 // create new user
@@ -84,4 +86,5 @@ function validPersonalCode($code): bool
     }
     return false;
 }
+
 ?>
