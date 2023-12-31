@@ -18,3 +18,21 @@
             <li><a href="/user/logout.php">Log Out</a></li>
         </ul>
     </header>
+
+<!-- Message handling -->
+    <?php
+    session_start();
+    if (isset($_SESSION['msg'])){
+        $msg = $_SESSION['msg'];
+        unset($_SESSION['msg']);
+        if (isset($_SESSION['msgType'])){
+            $msgType = $_SESSION['msgType'];
+            unset($_SESSION['msgType']);
+        } else {
+            $msgType = 'blue';
+        }
+        echo '<div class="message '. $msgType .'">';
+        echo $msg;
+        echo '</div>';
+    } 
+    ?>
