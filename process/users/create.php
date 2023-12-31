@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 echo '</pre>';
                 
                 file_put_contents(__DIR__ . '/../../data/users.ser',  serialize($users));
+                file_put_contents(__DIR__ . '/../../data/users-max-id.ser',  serialize($usersMaxID));
                 
                 //Create Success message
                 session_start();
