@@ -51,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             
             $_SESSION['msg'] = 'Error: ' . $err;
             $_SESSION['msgType'] = 'red';
-            // echo 'Klaida: ' . $err;
-            // echo '<pre>';
-            // print_r($users);
-            // echo '</pre>';
+            echo 'Klaida: ' . $err;
+            echo '<pre>';
+            print_r($users);
+            echo '</pre>';
             // Go back to form page
             
             header('location: http://localhost/bank/index.php?p=userchangepw');
