@@ -5,7 +5,7 @@ if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
     ?>
     <div class="left-menu">
         <ul>
-            <li><a href="#">My money accounts</a></li>
+            <li><a href="index.php?p=accountsview">My money accounts</a></li>
             <li><a href="#">Make a transaction</a></li>
             <li><a href="#">Transactions history</a></li>
             <li><a href="index.php?p=userview">User data</a></li>
@@ -35,6 +35,9 @@ switch ($page) {
         break;
     case 'userchangepw':
         require(__DIR__ . '/../sections/userchangepw.php');
+        break;
+    case 'accountsview':
+        require(__DIR__ . '/../sections/accountsview.php');
         break;
     default:
         //consider if user is loged in when redirecting
