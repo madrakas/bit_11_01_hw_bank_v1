@@ -33,6 +33,9 @@ switch ($page) {
     case 'useredit':
         require(__DIR__ . '/../sections/useredit.php');
         break;
+    case 'userchangepw':
+        require(__DIR__ . '/../sections/userchangepw.php');
+        break;
     default:
         //consider if user is loged in when redirecting
         require(__DIR__ . '/../sections/main.php');
