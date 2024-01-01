@@ -8,14 +8,18 @@ body, body * {
 body {
     margin: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     min-height: 100vh;
     background-color: rgb(196, 221, 243);
 }
 
 h1 {
     margin-bottom: 2rem;
+}
+
+h2, h3{
+    text-align: left;
 }
 
 p{
@@ -115,7 +119,7 @@ header a {
     padding: 1rem;
     font-size: 1rem;
     font-weight: 600;
-    margin: 2rem 1rem;
+    margin: 2rem 1rem 0 1rem;
     border-radius: 1rem;
 
 }
@@ -151,6 +155,51 @@ content{
     min-height: calc(100vh - 12rem);
     background-color: white;
     border-radius: 5px;
+}
+
+content.logedin{
+    width: calc(100% - 22rem);
+}
+
+.left-menu {
+    display: flex;
+    width: 18rem;
+    float: left;
+    padding: 2rem;;
+    margin: 2rem 2rem 2rem 0;
+    min-height: calc(100vh - 12rem);
+    height: 100%;
+    background-color: rgb(0, 125, 175);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.left-menu ul{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.left-menu li {
+    display: flex;
+    width: auto;
+    /* margin-bottom: 1rem; */
+    background-color: transparent;
+}
+
+.left-menu li:hover{
+    display: flex;
+    width: auto;
+    /* margin-bottom: 1rem; */
+    background-color: rgb(0, 168, 235);
+}
+
+.left-menu a{
+    color: white;
+    padding: 1rem 0;
+    /* text-decoration: none; */
 }
 
 /* footer */
