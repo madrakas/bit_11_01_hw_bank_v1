@@ -59,7 +59,7 @@ $maxAccountID = 3;
 
 file_put_contents(__DIR__ . '/../data/users.ser',  serialize($users));
 file_put_contents(__DIR__ . '/../data/users-max-id.ser',  serialize($maxUserID));
-file_put_contents(__DIR__ . '/../data/acounts.ser',  serialize($accounts));
+file_put_contents(__DIR__ . '/../data/accounts.ser',  serialize($accounts));
 file_put_contents(__DIR__ . '/../data/accounts-max-id.ser',  serialize($maxAccountID));
 echo ('seeder finisherd/n');
 
