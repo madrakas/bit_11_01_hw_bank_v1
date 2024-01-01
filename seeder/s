@@ -31,8 +31,36 @@ $users = [
 
 $maxUserID = 100003;
  
+$accounts = [
+        [
+            'id' => 1,
+            'uid' => 100001,
+            'iban' => 'LT' . rand(0,9) . rand(0,9) . '99999'. '0000000001',
+            'amount' => rand(100, 1000),
+            'currency' => 'Eur',
+        ],
+        [
+            'id' => 2,
+            'uid' => 100002,
+            'iban' => 'LT' . rand(0,9) . rand(0,9) . '99999'. '0000000002',
+            'amount' => rand(100, 1000),
+            'currency' => 'Eur',
+        ],
+        [
+            'id' => 3,
+            'uid' => 100003,
+            'iban' => 'LT' . rand(0,9) . rand(0,9) . '99999'. '0000000003',
+            'amount' => rand(100, 1000),
+            'currency' => 'Eur',
+        ],
+    ];
+
+$maxAccountID = 3;
+
 file_put_contents(__DIR__ . '/../data/users.ser',  serialize($users));
 file_put_contents(__DIR__ . '/../data/users-max-id.ser',  serialize($maxUserID));
+file_put_contents(__DIR__ . '/../data/acounts.ser',  serialize($accounts));
+file_put_contents(__DIR__ . '/../data/accounts-max-id.ser',  serialize($maxAccountID));
 echo ('seeder finisherd/n');
 
 ?>
