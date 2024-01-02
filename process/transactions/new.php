@@ -75,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         //log transaction
         $transfers = unserialize(file_get_contents(__DIR__ . '/../../data/transfers.ser'));
         $transfers[] = [
+            'time' => date('Y-m-d H:i:s'),
             'from' => $acc,
             'to' => $to,
             'toIBAN' => $riban,

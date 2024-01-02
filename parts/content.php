@@ -48,6 +48,9 @@ switch ($page) {
     case 'transfernew':
         require(__DIR__ . '/../sections/transfernew.php');
         break;
+    case 'transferview':
+        require(__DIR__ . '/../sections/transferview.php');
+        break;
     default:
         //consider if user is loged in when redirecting
         require(__DIR__ . '/../sections/main.php');

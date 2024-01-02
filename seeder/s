@@ -57,6 +57,8 @@ $accounts = [
 
 $maxAccountID = 3;
 
+$transfers = [];
+file_put_contents(__DIR__ . '/../data/transfers.ser', serialize($transfers));
 file_put_contents(__DIR__ . '/../data/users.ser',  serialize($users));
 file_put_contents(__DIR__ . '/../data/users-max-id.ser',  serialize($maxUserID));
 file_put_contents(__DIR__ . '/../data/accounts.ser',  serialize($accounts));
