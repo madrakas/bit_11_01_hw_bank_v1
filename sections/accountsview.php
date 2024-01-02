@@ -2,7 +2,7 @@
         $accounts = unserialize(file_get_contents(__DIR__ . '/../data/accounts.ser'));
         $accounts = array_filter($accounts, fn($account) => ($account['uid'] === $_SESSION['uid']));
     } else {
-        header("HTTP/1.1 401 Unauthorized");
+        header("Location: http://localhost/Bank/index.php");
     die;
 }?>
 

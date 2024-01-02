@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         // echo '</pre>';
         file_put_contents(__DIR__ . '/../../data/accounts.ser', serialize($accounts));
         file_put_contents(__DIR__ . '/../../data/accounts-max-id.ser', serialize($maxAccountID));
+
+        $_SESSION['msg'] = 'Money account added successfully.';
+        $_SESSION['msgType'] = 'green';
+
         header('location: http://localhost/bank/index.php?p=accountsview');
     }else{
         header('location: http://localhost/bank/index.php');
