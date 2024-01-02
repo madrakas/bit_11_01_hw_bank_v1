@@ -38,12 +38,28 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                         'password' => sha1($pw1),
                 ];
                                 
-                echo '<pre>';
-                print_r($users);
-                echo '</pre>';
+                // echo '<pre>';
+                // print_r($users);
+                // echo '</pre>';
                 
                 file_put_contents(__DIR__ . '/../../data/users.ser',  serialize($users));
                 file_put_contents(__DIR__ . '/../../data/users-max-id.ser',  serialize($usersMaxID));
+
+                // Add account
+                $accounts = unserialize(file_get_contents(__DIR__ . '/../../data/accounts.ser'));
+                $maxAccountID = unserialize(file_get_contents(__DIR__ . '/../../data/accounts-max-id.ser'));
+                $accounts[] = [
+                    'id' => ++$maxAccountID,
+                    'uid' => $usersMaxID,
+                    'iban' => 'LT' . rand(0, 9) . rand(0, 9) . '99999' . str_pad(++$maxAccountID, 10, '0', STR_PAD_LEFT),
+                    'amount' => rand(100, 1000),
+                    'currency' => 'Eur',
+                ];
+                // echo '<pre>';
+                // print_r($accounts);
+                // echo '</pre>';
+                file_put_contents(__DIR__ . '/../../data/accounts.ser', serialize($accounts));
+                file_put_contents(__DIR__ . '/../../data/accounts-max-id.ser', serialize($maxAccountID));
                 
                 //Create Success message
                 session_start();
