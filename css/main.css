@@ -235,6 +235,14 @@ input {
     border-radius: 5px;
 }
 
+option, select {
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: white;
+}
+
 label {
     font-size: 1.3rem;
     font-weight: 700;

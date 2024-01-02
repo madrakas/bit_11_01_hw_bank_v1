@@ -1,11 +1,11 @@
 <?php if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ 
     $users = unserialize(file_get_contents(__DIR__ . '/../data/users.ser'));
     $users = array_filter($users, fn($user) => ($user['id'] === $_SESSION['uid']));
+    $users = array_values($users);
     $firstname = $users[0]['firstname'] ?? '';
     $lastname = $users[0]['lastname'] ?? '';
     $email = $users[0]['email'] ?? '';
     $ak = $users[0]['ak'] ?? '';
-
 } else {
     header("HTTP/1.1 401 Unauthorized");
     die;
