@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 // foreach($users as $user){
                 foreach($users as $key=>$value){
                     if ($users[$key]['id'] === $_SESSION['uid']){
-                        echo 'radau';
                         $users[$key]['firstname'] = $firstname;
                         $users[$key]['lastname'] = $lastname;
                         $users[$key]['email'] = $email;
