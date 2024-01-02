@@ -1,6 +1,6 @@
 <?php
 
-$accounts = unserialize(file_get_contents(__DIR__ . '/data/acounts.ser'));
+$accounts = unserialize(file_get_contents(__DIR__ . '/data/accounts.ser'));
 $acountsMaxID = unserialize(file_get_contents(__DIR__ . '/data/accounts-max-id.ser'));
 
 
