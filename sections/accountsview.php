@@ -19,11 +19,11 @@
                 <div class="acc_iban"><?= $account['iban']?></div>
                 <div class="acc_amouont"><?= $account['amount']?></div>
                 <div class="acc_curr"><?= $account['currency']?></div>
-                <div class="acc_del"><a href="index.php?p=delacc&acc=<?= $account['id']?>">Delete</a></div>
+                <div class="acc_del"><a href="index.php?p=accountsdel&acc=<?= $account['id']?>">Delete</a></div>
             </div>
             <?php
         }
     ?>
 
     <h2>More actions</h2>
-    <p><a href="index.php?p=addacc">Add new money account</a></p>
+    <p><a href="index.php?p=accountsadd">Add new money account</a></p>

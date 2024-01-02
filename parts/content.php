@@ -39,6 +39,9 @@ switch ($page) {
     case 'accountsview':
         require(__DIR__ . '/../sections/accountsview.php');
         break;
+    case 'accountsadd':
+        require(__DIR__ . '/../sections/accountsadd.php');
+        break;
     default:
         //consider if user is loged in when redirecting
         require(__DIR__ . '/../sections/main.php');
