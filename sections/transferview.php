@@ -19,15 +19,16 @@
         $transOut = array_values($transOut);
         if (count($transOut) > 0){
             echo '<div class="details-head">Sent:</div>';
+            echo '<div class="detail-headings">
+            <div class="time">When</div>
+            <div class="toIBAN">Recipient IBAN</div>
+            <div class="toName">Recipient name</div>
+            <div class="amount">Amount</div>
+            <div class="currency">Currency</div>
+        </div>';
         }
         foreach ($transOut as $tout){
-            echo '<div class="detail-headings">
-                <div class="time">When</div>
-                <div class="toIBAN">Recipient IBAN</div>
-                <div class="toName">Recipient name</div>
-                <div class="amount">Amount</div>
-                <div class="currency">Currency</div>
-            </div>';
+
             echo '<div class="detail-row">';
                 echo '<div class="time">' . $tout['time'] . '</div>';
                 echo '<div class="toIBAN">' . $tout['toIBAN'] . '</div>';
@@ -38,15 +39,16 @@
         }
         if (count($transIn) > 0){
             echo '<div class="details-head">Received:</div>';
+            echo '<div class="detail-headings">
+            <div class="time">When</div>
+            <div class="toIBAN">Sender IBAN</div>
+            <div class="toName">Sender name</div>
+            <div class="amount">Amount</div>
+            <div class="currency">Currency</div>
+            </div>';
         }
         foreach ($transIn as $tin){
-            echo '<div class="detail-headings">
-                <div class="time">When</div>
-                <div class="toIBAN">Sender IBAN</div>
-                <div class="toName">Sender name</div>
-                <div class="amount">Amount</div>
-                <div class="currency">Currency</div>
-            </div>';
+
             echo '<div class="detail-row">';
                 echo '<div class="time">' . $tin['time'] . '</div>';
                 echo '<div class="toIBAN">' . $tin['fromIBAN'] . '</div>';
