@@ -22,7 +22,7 @@ $users = [
     [
         'id' => 100003,
         'firstname' => 'Meška',
-        'lasstname' => 'Lepeška',
+        'lastname' => 'Lepeška',
         'email' => 'meska.lepeska@zaliasmiskas.lt',
         'ak' => '333444555',
         'password' => sha1('123'),

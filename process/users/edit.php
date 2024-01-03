@@ -4,6 +4,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         header('HTTP/1.1 405 Method Not Allowed');
         die;
 } else {
+    
+    session_start();
+    if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ 
         $firstname = $_POST['firstname'] ?? '';
         $lastname = $_POST['lastname'] ?? '';
         $ak = $_POST['ak'] ?? '';
@@ -14,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $err ='';
         
         $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
-        session_start();
+    
         $users = array_filter($users, fn($user) => ($user['id'] !== $_SESSION['uid']));
 
 
@@ -69,6 +72,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 
                 header('location: http://localhost/bank/index.php?p=useredit&firstname=' . $firstname . '&lastname=' . $lastname . '&ak='. $ak . '&email=' . $email);
         }
+
+    } else {
+        header('Location: http://localhost/bank/index.php');
+        die;
+    }
 }
 
 die;
