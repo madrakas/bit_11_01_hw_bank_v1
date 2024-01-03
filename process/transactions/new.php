@@ -27,23 +27,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
         $err = '';
         if (count($accounts) < 1){
-            $err .= 'Account not found';
+            $err .= "Sender's Account not found";
         } 
-
-        // echo $acc . '<br/>';
-        // echo $riban . '<br/>';
-        // echo $rname . '<br/>';
-        // echo $rname . '<br/>';
-        // echo $samount . '<br/>';
-
-        // echo '<pre>';
-        // print_r($accounts);
-        // echo '</pre>';
 
         if ($accounts[0]['amount'] < $samount){
             $err .= 'Insuficient funds in selected account';
         }
 
+        $bankCode = substr($riban, 4, 5);
+        if ($bankCode === '99999'){
+           $accounts = unserialize(file_get_contents(__DIR__ . '/../../data/accounts.ser'));
+           $accounts = array_filter($accounts, fn($account) => ($account['iban'] ===  $riban)); 
+           if (count($accounts) < 1) {
+               $err .= "Recipient's IBAN not found in BIT bank.";
+           }   
+        }
         
 
         if ($err !== ''){
@@ -53,6 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('location: http://localhost/bank/index.php?p=transfernew');
             die;
         }
+
+
 
         //reduce amount
         $accounts = unserialize(file_get_contents(__DIR__ . '/../../data/accounts.ser'));
