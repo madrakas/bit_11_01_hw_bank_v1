@@ -8,7 +8,7 @@
     $ak = $users[0]['ak'] ?? '';
 
 } else {
-    header("HTTP/1.1 401 Unauthorized");
+    header('Location: http://localhost/bank/index.php');
     die;
 }?>
 

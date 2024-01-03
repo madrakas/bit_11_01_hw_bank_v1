@@ -5,7 +5,7 @@
     $firstname = $users[0]['firstname'] ?? '';
     $lastname = $users[0]['lastname'] ?? '';
 } else {
-    header("HTTP/1.1 401 Unauthorized");
+    header('Location: http://localhost/bank/index.php');
     die;
 }?>
 
