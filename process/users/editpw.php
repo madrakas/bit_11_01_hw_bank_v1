@@ -3,8 +3,7 @@ session_start();
 if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ 
     
 } else {
-    header("HTTP/1.1 401 Unauthorized");
-    die;
+        header('location: http://localhost/bank/index.php?p=userchangepw');
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

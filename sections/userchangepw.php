@@ -1,7 +1,7 @@
 <?php if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ 
     
 } else {
-    header("HTTP/1.1 401 Unauthorized");
+    header('Location: http://localhost/bank/index.php');
     die;
 }?>
 
