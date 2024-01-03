@@ -24,4 +24,5 @@
     <p><a href="index.php?p=useredit">Edit personal information</a></p>
     <p><a href="index.php?p=userchangepw">Change password</a></p>
     <p><a href="index.php?p=usercloseacc">Close acount</a></p>
+    
 

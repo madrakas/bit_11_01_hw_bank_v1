@@ -36,6 +36,9 @@ switch ($page) {
     case 'userchangepw':
         require(__DIR__ . '/../sections/userchangepw.php');
         break;
+    case 'usercloseacc':
+        require(__DIR__ . '/../sections/usercloseacc.php');
+        break;
     case 'accountsview':
         require(__DIR__ . '/../sections/accountsview.php');
         break;
