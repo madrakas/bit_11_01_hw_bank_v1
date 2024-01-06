@@ -1,7 +1,15 @@
 <?php
     session_start();
     if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
-        $headerClass = 'logedin';
+        $admins = unserialize(file_get_contents(__DIR__ . '/../data/admins.ser'));
+        if (in_array($_SESSION['uid'], $admins)){
+            $isAdmin = true;
+            $headerClass = 'admin';
+        } else {
+            $headerClass = 'logedin';
+            $isAdmin = false;
+        }
+        
     } else {
         $headerClass = '';
     }

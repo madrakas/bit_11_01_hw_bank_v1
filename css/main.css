@@ -49,6 +49,10 @@ header.logedin, footer.logedin{
     background-color: rgb(236, 204, 0);
 }
 
+header.admin, footer.admin{
+    background-color: rgb(0, 35, 177);
+}
+
 header button{
     background: none!important;
     border: none;

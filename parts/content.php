@@ -2,9 +2,22 @@
 
 <?php 
 if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
+    $admins = unserialize(file_get_contents(__DIR__ . '/../data/admins.ser'));
+    if (in_array($_SESSION['uid'], $admins)){
+        $isAdmin = true;
+    } else {
+        $isAdmin = false;
+    }
+
     ?>
     <div class="left-menu">
         <ul>
+            <?php if ($isAdmin) { ?>
+                <strong>Admin menu</strong>
+                <hr/>
+                <li><a href="index.php?p=adminlistusers">Show users</a></li>    
+                <strong>User menu</strong><hr/>
+                <?php } ?>
             <li><a href="index.php?p=accountsview">My money accounts</a></li>
             <li><a href="index.php?p=transfernew">Make a transaction</a></li>
             <li><a href="index.php?p=transferview">Transactions history</a></li>
@@ -53,6 +66,12 @@ switch ($page) {
         break;
     case 'transferview':
         require(__DIR__ . '/../sections/transferview.php');
+        break;
+    case 'adminlistusers':
+        require(__DIR__ . '/../sections/adminlistusers.php');
+        break;
+    case 'adminuserdetails':
+        require(__DIR__ . '/../sections/adminuserdetails.php');
         break;
     default:
         //consider if user is loged in when redirecting

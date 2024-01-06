@@ -1,12 +1,12 @@
 <?php
 
-echo 'seeder started\n';
+echo 'seeder started... ';
 
 $users = [
     [
         'id' => 100001,
         'firstname' => 'Lapė',
-        'lastname' => 'snapė',
+        'lastname' => 'Snapė',
         'email' => 'lape.snape@gmail.com',
         'ak' => '111222333',
         'password' => sha1('123'),
@@ -25,6 +25,14 @@ $users = [
         'lastname' => 'Lepeška',
         'email' => 'meska.lepeska@zaliasmiskas.lt',
         'ak' => '333444555',
+        'password' => sha1('123'),
+    ],
+    [
+        'id' => 100004,
+        'firstname' => 'Apuokas',
+        'lastname' => 'Beausis',
+        'email' => 'apuokas.beausis@zaliasmiskas.lt',
+        'ak' => '444555666',
         'password' => sha1('123'),
     ]
 ];
@@ -53,16 +61,27 @@ $accounts = [
             'amount' => rand(100, 1000),
             'currency' => 'Eur',
         ],
+        [
+            'id' => 4,
+            'uid' => 100004,
+            'iban' => 'LT' . rand(0,9) . rand(0,9) . '99999'. '0000000004',
+            'amount' => rand(100, 1000),
+            'currency' => 'Eur',
+        ]
     ];
 
 $maxAccountID = 3;
 
 $transfers = [];
-file_put_contents(__DIR__ . '/../data/transfers.ser', serialize($transfers));
+$admins = [100003, 100004];
+
 file_put_contents(__DIR__ . '/../data/users.ser',  serialize($users));
 file_put_contents(__DIR__ . '/../data/users-max-id.ser',  serialize($maxUserID));
+file_put_contents(__DIR__ . '/../data/admins.ser',  serialize($admins));
 file_put_contents(__DIR__ . '/../data/accounts.ser',  serialize($accounts));
+file_put_contents(__DIR__ . '/../data/transfers.ser', serialize($transfers));
 file_put_contents(__DIR__ . '/../data/accounts-max-id.ser',  serialize($maxAccountID));
-echo ('seeder finisherd/n');
+file_put_contents(__DIR__ . '/../data/accounts-max-id.ser',  serialize($maxAccountID));
+echo ('seeder finisherd\n');
 
 ?>
