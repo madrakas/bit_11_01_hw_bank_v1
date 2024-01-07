@@ -45,7 +45,7 @@
     echo '<p><strong>Last Name: </strong>'. $ulname .'</p>';
     echo '<p><strong>Email Name: </strong>'. $uemail .'</p>';
     echo '<p><strong>Personal identificartion code: </strong>'. $uak .'</p>';
-    echo '<p><a href="#">Edit data</a> <a href="#">Delete user</a></p></div>';
+    echo '<p><a href="http://localhost/bank/index.php?p=useredit&usr='. $uid .'">Edit data</a> <a href="#">Delete user</a></p></div>';
     echo '</div>';
     echo '<div class="details-head">Money accounts</div>';
 
