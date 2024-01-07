@@ -56,10 +56,9 @@
         echo '<div class="detail-row">';
         echo '<div>' . ++$i . '.</div>';
         echo '<div>' .  $account['iban'] . ' | ' . $account['amount'] . ' ' . $account['currency'] . ' | <a href="#">Add funds</a> | <a href="#">Withdraw funds</a> | <a href="#">View transactions</a> | <a href="#">Delete money account</a></div>';
-        echo '</div>';}
+        echo '</div>';
+    }
 
-        echo '<pre>';
-    print_r ($accounts);
-    echo '</pre>';
 ?>
-
+<h2>More actions</h2>
+<p><a href="#">Add money account</a></p>

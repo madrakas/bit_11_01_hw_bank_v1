@@ -35,4 +35,4 @@
 ?>
 
 <h2>More actions</h2>
-    <p><a href="index.php?p=adminnewusr">Add new user</a></p>
+    <p><a href="index.php?p=signup">Add new user</a></p>
