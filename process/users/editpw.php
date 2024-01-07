@@ -18,8 +18,7 @@ if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
                    $uid = intval($_POST['usr']);
                    $usrUrl = '&usr=' . $uid;
                 }else{
-                        echo "!!!";
-                        // header('location: http://localhost/bank/index.php');
+                        header('location: http://localhost/bank/index.php');
                         die;
                 }
             }else{
