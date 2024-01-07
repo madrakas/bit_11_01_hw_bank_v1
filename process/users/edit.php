@@ -7,19 +7,36 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     
     session_start();
     if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ 
+        if (isset($_POST['usr'])){
+            $uid = intval($_POST['usr']);
+            //Check if user is admin
+            $isAdmin = false;
+            $admins = unserialize(file_get_contents(__DIR__ . '/../../data/admins.ser'));
+            if (in_array($_SESSION['uid'], $admins)){
+                $isAdmin = true;
+            }
+            if (!$isAdmin){
+                header('Location: http://localhost/bank/index.php');
+                die;
+            } else {
+                $returnVar = '&usr=' . $uid;
+            }
+        } else {
+            $uid = $_SESSION['uid'];
+            $returnVar = '';
+        }
+
         $firstname = $_POST['firstname'] ?? '';
         $lastname = $_POST['lastname'] ?? '';
         $ak = $_POST['ak'] ?? '';
         $email = $_POST['email'] ?? '';
         $pw1 = $_POST['pw1'] ?? '';
         $pw2 = $_POST['pw2'] ?? '';
-
+        
         $err ='';
         
         $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
-    
-        $users = array_filter($users, fn($user) => ($user['id'] !== $_SESSION['uid']));
-
+        $users = array_filter($users, fn($user) => ($user['id'] !== $uid));
 
         if ($firstname === '' || $lastname === '' || $ak === '' || $email === ''){
                 $err .= 'All fields are required.<br/>';
@@ -37,13 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 $err .= 'Last name must be 4 letters or longer';
         }
         
-        
         if ($err === ''){
                 // save user details
                 $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
                 // foreach($users as $user){
                 foreach($users as $key=>$value){
-                    if ($users[$key]['id'] === $_SESSION['uid']){
+                    if ($users[$key]['id'] === $uid){
                         $users[$key]['firstname'] = $firstname;
                         $users[$key]['lastname'] = $lastname;
                         $users[$key]['email'] = $email;
@@ -62,19 +78,20 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 // print_r($users);
                 // echo '</pre>';
                 // Go to login page
-                header('location: http://localhost/bank/index.php?p=useredit');
+                header('location: http://localhost/bank/index.php?p=useredit' . $returnVar);
         } else {
                 // create error message
                 
                 $_SESSION['msg'] = 'Error: ' . $err;
                 $_SESSION['msgType'] = 'red';
                 // echo 'Klaida: ' . $err;
+                // echo 'uid: '. $uid;
                 // echo '<pre>';
                 // print_r($users);
                 // echo '</pre>';
                 // Go back to form page
                 
-                header('location: http://localhost/bank/index.php?p=useredit&firstname=' . $firstname . '&lastname=' . $lastname . '&ak='. $ak . '&email=' . $email);
+                header('location: http://localhost/bank/index.php?p=useredit' . $returnVar . '&firstname=' . $firstname . '&lastname=' . $lastname . '&ak='. $ak . '&email=' . $email);
         }
 
     } else {
