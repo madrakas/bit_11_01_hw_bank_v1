@@ -4,6 +4,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         header('HTTP/1.1 405 Method Not Allowed');
         die;
 } else {
+        session_start();
+        $isAdmin = false;
+        if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
+            $admins = unserialize(file_get_contents(__DIR__ . '/../../data/admins.ser'));
+            if (in_array($_SESSION['uid'], $admins)){
+                $isAdmin = true;
+            }      
+        }
+
         $firstname = $_POST['firstname'] ?? '';
         $lastname = $_POST['lastname'] ?? '';
         $ak = $_POST['ak'] ?? '';
@@ -55,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                     'amount' => rand(100, 1000),
                     'currency' => 'Eur',
                 ];
+
                 // echo '<pre>';
                 // print_r($accounts);
                 // echo '</pre>';
@@ -62,14 +72,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 file_put_contents(__DIR__ . '/../../data/accounts-max-id.ser', serialize($maxAccountID));
                 
                 //Create Success message
-                session_start();
+                
                 $_SESSION['msg'] = 'User created successfully.';
                 $_SESSION['msgType'] = 'green';
-                // Go to login page
-                header('location: http://localhost/bank/index.php?p=login');
+                if ($isAdmin === true){
+                        // Go to users list page
+                        header('location: http://localhost/bank/index.php?p=adminlistusers');
+                }else{
+                        // Go to login page
+                        header('location: http://localhost/bank/index.php?p=login');
+                }
+
+                
         } else {
                 // create error message
-                session_start();
+                
                 $_SESSION['msg'] = 'Error: ' . $err;
                 $_SESSION['msgType'] = 'red';
                 echo 'Klaida: ' . $err;

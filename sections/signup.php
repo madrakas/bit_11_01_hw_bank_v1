@@ -1,13 +1,23 @@
 <?php 
- $firstname = $_GET['firstname'] ?? '';
- $lastname = $_GET['lastname'] ?? '';
- $email = $_GET['email'] ?? '';
- $ak = $_GET['ak'] ?? '';
+    $isAdmin = false;
+    if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
+        $admins = unserialize(file_get_contents(__DIR__ . '/../data/admins.ser'));
+        if (in_array($_SESSION['uid'], $admins)){
+            $isAdmin = true;
+        }      
+    }
+
+    $firstname = $_GET['firstname'] ?? '';
+    $lastname = $_GET['lastname'] ?? '';
+    $email = $_GET['email'] ?? '';
+    $ak = $_GET['ak'] ?? '';
 ?>
 
 <h1>Create new Bit Bank account</h1>
+<?php if(!$isAdmin){ ?>
 <p>Welcome to BIT Bank. To create new user account, please fill in this form.</p>
 <p>As bonus you will receive a bonus from 100 to 1000 Eur in your new bank account.</p>
+<?php } ?>
 <p>All fields are required.</p>
 <form action="http://localhost/bank/process/users/create.php" method='post'>
     <label for="firstname">First name</label>
