@@ -31,6 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 $err .= 'User with same Email already exists.<b/r>.';
         } elseif (count(array_filter($users, fn($user) => ($user['ak'] === $ak))) > 0){
                 $err .= 'User with same Personal identification number already exists.<b/r>';
+        } elseif (strlen($firstname) < 4){
+            $err .= 'First name must be 4 letters or longer';
+        } elseif (strlen($lastname) < 4){
+                $err .= 'Last name must be 4 letters or longer';
         }
         
         
