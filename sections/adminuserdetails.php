@@ -45,7 +45,7 @@
     echo '<p><strong>Last Name: </strong>'. $ulname .'</p>';
     echo '<p><strong>Email: </strong>'. $uemail .'</p>';
     echo '<p><strong>Personal identificartion code: </strong>'. $uak .'</p>';
-    echo '<p><a href="http://localhost/bank/index.php?p=useredit&usr='. $uid .'">Edit data</a> <a href="http://localhost/bank/index.php?p=userchangepw&usr='. $uid .'">Change password</a> <a href="#">Delete user</a></p></div>';
+    echo '<p><a href="http://localhost/bank/index.php?p=useredit&usr='. $uid .'">Edit data</a> <a href="http://localhost/bank/index.php?p=userchangepw&usr='. $uid .'">Change password</a> <a href="http://localhost/bank/index.php?p=usercloseacc&usr='. $uid .'">Delete user</a></p></div>';
     echo '</div>';
     echo '<div class="details-head">Money accounts</div>';
 
