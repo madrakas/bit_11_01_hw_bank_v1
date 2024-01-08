@@ -16,6 +16,7 @@ if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){
                 <strong>Admin menu</strong>
                 <hr/>
                 <li><a href="index.php?p=adminlistusers">Show users</a></li>    
+                <li><a href="index.php?p=adminlogins">View logins</a></li>    
                 <strong>User menu</strong><hr/>
                 <?php } ?>
             <li><a href="index.php?p=accountsview">My money accounts</a></li>
@@ -78,6 +79,9 @@ switch ($page) {
         break;
     case 'adminaccremfunds':
         require(__DIR__ . '/../sections/adminaccremfunds.php');
+        break;
+    case 'adminlogins':
+        require(__DIR__ . '/../sections/adminlogins.php');
         break;
     default:
         //consider if user is loged in when redirecting
