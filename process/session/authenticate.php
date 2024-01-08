@@ -10,6 +10,14 @@
         foreach ($users as $user) {
             if ($user['email'] === $_POST['email']) {
                 if ($user['password'] === sha1($_POST['pw'])) {
+                    $logins = unserialize(file_get_contents(__DIR__ . '/../../data/logins.ser'));
+                    $logins[] = [
+                        'time' => date('Y-m-d H:i:s'),
+                        'user' => $user['id'],
+                        'status' => 'Login ok',
+                    ];
+                    file_put_contents(__DIR__ . '/../../data/logins.ser', serialize($logins));
+
                     session_start();
                     $_SESSION['login'] = '1';
                     $_SESSION['uid'] = $user['id'];
@@ -20,6 +28,14 @@
                 }
             }
         }
+
+        $logins = unserialize(file_get_contents(__DIR__ . '/../../data/logins.ser'));
+        $logins[] = [
+            'time' => date('Y-m-d H:i:s'),
+            'user' => $user['id'],
+            'status' => 'Login failed',
+        ];
+        file_put_contents(__DIR__ . '/../../data/logins.ser', serialize($logins));
         session_start();
         $_SESSION['msg'] = 'Log In unsuccessfull.';
         $_SESSION['msgType'] = 'red';

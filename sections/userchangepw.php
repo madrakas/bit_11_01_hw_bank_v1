@@ -1,5 +1,6 @@
 <?php if (isset($_SESSION['login']) && ($_SESSION['login'] === '1' )){ 
     $isAdmin = false;
+    $usrInput = '';
     $admins = unserialize(file_get_contents(__DIR__ . '/../data/admins.ser'));
     if (in_array($_SESSION['uid'], $admins)){
         $isAdmin = true;

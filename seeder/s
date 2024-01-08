@@ -73,6 +73,7 @@ $accounts = [
 $maxAccountID = 3;
 
 $transfers = [];
+$logins = [];
 $admins = [100003, 100004];
 
 file_put_contents(__DIR__ . '/../data/users.ser',  serialize($users));
