@@ -41,5 +41,4 @@
         $_SESSION['msgType'] = 'red';
         header('Location: http://localhost/bank/index.php?l=baaaad');
         die;
-        
     }
