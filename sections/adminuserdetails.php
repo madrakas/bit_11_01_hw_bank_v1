@@ -55,7 +55,7 @@
     foreach ($accounts as $account) {
         echo '<div class="detail-row">';
         echo '<div>' . ++$i . '.</div>';
-        echo '<div>' .  $account['iban'] . ' | ' . $account['amount'] . ' ' . $account['currency'] . ' | <a href="http://localhost/bank/index.php?p=adminaccaddfunds&accid='. $account['id'] .'">Add funds</a> | <a href="http://localhost/bank/index.php?p=adminaccremfunds&accid='. $account['id'] .'">Withdraw funds</a> | <a href="http://localhost/bank/index.php?p=admintransactions&usr='. $uid .'">View transactions</a> | <a href="#">Delete money account</a></div>';
+        echo '<div>' .  $account['iban'] . ' | ' . $account['amount'] . ' ' . $account['currency'] . ' | <a href="http://localhost/bank/index.php?p=adminaccaddfunds&accid='. $account['id'] .'">Add funds</a> | <a href="http://localhost/bank/index.php?p=adminaccremfunds&accid='. $account['id'] .'">Withdraw funds</a> | <a href="http://localhost/bank/index.php?p=admintransactions&usr='. $uid .'">View transactions</a> | <a href="http://localhost/bank/index.php?p=accountsdel&acc='. $account['id'] .'">Delete money account</a></div>';
         echo '</div>';
     }
 
