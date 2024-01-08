@@ -61,11 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 // Add account
                 $accounts = unserialize(file_get_contents(__DIR__ . '/../../data/accounts.ser'));
                 $maxAccountID = unserialize(file_get_contents(__DIR__ . '/../../data/accounts-max-id.ser'));
+                if ($isAdmin){
+                        $amount = 0;
+                }else{
+                        $amount = rand(100, 1000);
+                }
                 $accounts[] = [
                     'id' => ++$maxAccountID,
                     'uid' => $usersMaxID,
                     'iban' => 'LT' . rand(0, 9) . rand(0, 9) . '99999' . str_pad(++$maxAccountID, 10, '0', STR_PAD_LEFT),
-                    'amount' => rand(100, 1000),
+                    'amount' => $amount,
                     'currency' => 'Eur',
                 ];
 
