@@ -73,8 +73,11 @@ switch ($page) {
     case 'adminuserdetails':
         require(__DIR__ . '/../sections/adminuserdetails.php');
         break;
-    case 'adminaccddfunds':
-        require(__DIR__ . '/../sections/adminaccddfunds.php');
+    case 'adminaccaddfunds':
+        require(__DIR__ . '/../sections/adminaccaddfunds.php');
+        break;
+    case 'adminaccremfunds':
+        require(__DIR__ . '/../sections/adminaccremfunds.php');
         break;
     default:
         //consider if user is loged in when redirecting

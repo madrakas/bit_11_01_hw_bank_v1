@@ -23,16 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: http://localhost/bank/index.php');
             die;
         }
-        
     }else{
         header('Location: http://localhost/bank/index.php');
         die;
     }
 
     if (intval($_POST['amount']) < 0){
-        $_SESSION['msg'] = "To reduce money use witdraw function";
+        $_SESSION['msg'] = "To add money use add function";
         $_SESSION['msgType'] = 'red';
-        header('location: http://localhost/bank/index.php?p=adminaccaddfunds&accid=' . $accid);
+        header('Location: http://localhost/bank/index.php?p=adminlistusers');
         die;
     }
 
@@ -40,23 +39,29 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $accUid = 0;
     foreach ($accounts as $key => $value) {
         if ($accounts[$key]['id'] === $accid) {
-            // echo "radau";
-            $accounts[$key]['amount'] = $accounts[$key]['amount'] + intval($_POST['amount']);
-            $accUid = $accounts[$key]['uid'];
-            $riban = $accounts[$key]['iban'];
-            $curr = $accounts[$curr];
+            if ($accounts[$key]['amount'] >= intval($_POST['amount'])){
+                $accounts[$key]['amount'] = $accounts[$key]['amount'] - intval($_POST['amount']);
+                $accUid = $accounts[$key]['uid'];
+                $riban = $accounts[$key]['iban'];
+                $curr = $accounts[$curr];
+
+            }else{
+                $_SESSION['msg'] = "Insuficient balance - culdn't withdraw funds.";
+                $_SESSION['msgType'] = 'red';
+                header('Location: http://localhost/bank/index.php?p=adminaccremfunds&accid=' . $accid);
+                die;
+            }
         }
     }
 
     if ($accid === 0){
-        $_SESSION['msg'] = "Culdn't add funds.";
+        $_SESSION['msg'] = "Account error. Culdn't withdraw funds.";
         $_SESSION['msgType'] = 'red';
-        header('location: http://localhost/bank/index.php?p=adminlistusers');
+        header('Location: http://localhost/bank/index.php?p=adminlistusers');
         die;
     }else{
         file_put_contents(__DIR__ . '/../../data/accounts.ser', serialize($accounts));
 
-        
         //log transaction
         $users = unserialize(file_get_contents(__DIR__ . '/../../data/users.ser'));
         $users = array_filter($users, fn($user) => ($user['id'] === $accid));
@@ -66,10 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $transfers = unserialize(file_get_contents(__DIR__ . '/../../data/transfers.ser'));
         $transfers[] = [
             'time' => date('Y-m-d H:i:s'),
-            'from' => 0,
-            'to' => $to,
-            'toIBAN' => $riban,
-            'fromIBAN' => 'Cash',
+            'from' => $accid,
+            'to' => 0,
+            'toIBAN' => 'Cash',
+            'fromIBAN' => $riban,
             'fromName' => $firstname . ' ' . $lastname,
             'toName' => $firstname . ' ' . $lastname,
             'amount' => intval($_POST['amount']),
@@ -77,10 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         ];
         file_put_contents(__DIR__ . '/../../data/transfers.ser', serialize($transfers));
 
-        $_SESSION['msg'] = 'Funds added successfully.';
+        $_SESSION['msg'] = 'Funds withdrawed successfully.';
         $_SESSION['msgType'] = 'green';
-        header('location: http://localhost/bank/index.php?p=adminuserdetails&usr=' . $accUid);
+        header('Location: http://localhost/bank/index.php?p=adminuserdetails&usr=' . $accUid);
         die;
     }
-    
 }

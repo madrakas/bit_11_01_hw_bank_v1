@@ -82,6 +82,6 @@ file_put_contents(__DIR__ . '/../data/accounts.ser',  serialize($accounts));
 file_put_contents(__DIR__ . '/../data/transfers.ser', serialize($transfers));
 file_put_contents(__DIR__ . '/../data/accounts-max-id.ser',  serialize($maxAccountID));
 file_put_contents(__DIR__ . '/../data/accounts-max-id.ser',  serialize($maxAccountID));
-echo ('seeder finisherd\n');
+echo ('seeder finished');
 
 ?>
