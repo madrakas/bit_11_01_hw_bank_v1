@@ -61,4 +61,4 @@
 
 ?>
 <h2>More actions</h2>
-<p><a href="#">Add money account</a> | <a href=http://localhost/bank/index.php?p=adminlogins&usr=<?= $uid?>">Show logins log</a></p>
+<p><a href="http://localhost/bank/index.php?p=accountsadd&usr=<?= $uid ?>">Add money account</a> | <a href=http://localhost/bank/index.php?p=adminlogins&usr=<?= $uid?>">Show logins log</a></p>
