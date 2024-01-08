@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $transfers[] = [
             'time' => date('Y-m-d H:i:s'),
             'from' => 0,
-            'to' => $to,
+            'to' => $accid,
             'toIBAN' => $riban,
             'fromIBAN' => 'Cash',
             'fromName' => $firstname . ' ' . $lastname,
