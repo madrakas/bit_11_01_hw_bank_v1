@@ -30,7 +30,6 @@ Subjects by folders:
 * auth - session and authentication
 * db - MariaDB connection, seeder
 * nd - homework
-
 ## 🧭 Other repositories from same course
 1. [General programming skills and JS](https://github.com/madrakas/bit_01_Intro_to_programming_and_JS/)
 2. [Intro to HTML and CS](https://github.com/madrakas/bit_02_Intro_to_html/)
@@ -54,7 +53,11 @@ Subjects by folders:
 10. [Backend intro. React](https://github.com/madrakas/bit_10_backend_intro_react)
 11. [Backend. PHP](https://github.com/madrakas/bit_11_backend_php/)
     1. Practice No.1. Bank V1 (current repository)
-12. 
+12. [MVC, Webmix](https://github.com/madrakas/bit_12_webmix_oop_php)
+    1. [Practice No.1. Bank V2](https://github.com/madrakas/bit_12_01_hw_bank_v2_mvc_webmix/)
+13. [Intro to Laravel](https://github.com/madrakas/bit_13_intro_to_laravel)
+14. [Deeper into Laravel](https://github.com/madrakas/bit_14_deeper_into_laravel) 
+    1. [Practice No.1. Bank V3](https://github.com/madrakas/bit_14_01_laravel_bank). 
 
 ## 🎯 Project features/goals
 
